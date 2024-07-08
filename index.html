@@ -1,0 +1,61 @@
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title> シススク サンプル Web アプリケーション</title>
+
+    <!-- MQTT over Websocketのライブラリ -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.js" type="text/javascript"></script>
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.527.0.min.js" type="text/javascript"></script>
+
+    <!-- REST APIのライブラリ -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <!-- クライアント実装の読み込み -->
+    <script type="text/javascript" src="./js/common.js"></script>
+    <script type="text/javascript" src="./js/mqtt_client.js"></script>
+    <script type="text/javascript" src="./js/api_client.js"></script>
+</head>
+
+<body>
+
+    <h2> シススク サンプル Web アプリケーション </h2>
+    <!-- MQTTブローカーに接続 -->
+    <script>
+        mqttConnect();
+    </script>
+
+    <script>
+        getDatetime()
+    </script>
+    <p id="gotDatetime"></p>
+
+    IoT Core 接続 Status: <div id="status">Connection Status: Not Connected</div>
+    <br>
+
+    信号機の状態：<p id="messages"></p>
+
+    <figure>
+        <legend> 信号機 </legend>
+        <img id="trafic_signal" src="./img/signal_none.png" height="120px">
+        <div id="trafic_signal_name" style="display: none"></div>
+    </figure>
+    <br>
+
+    <p>
+        IoT Core に強制的に信号の色を Publish<br>
+        <input type="button" value="青" onclick="clickBtn(&quot;BLUE&quot;)"
+            style="color:#ffffff;background-color:#4EE27F;WIDTH:40px; HEIGHT:40px;" />
+        <input type="button" value="黄" onclick="clickBtn(&quot;YELLOW&quot;)"
+            style="color:#000000;background-color:#FFFF00;WIDTH:40px; HEIGHT:40px;" />
+        <input type="button" value="赤" onclick="clickBtn(&quot;RED&quot;)"
+            style="color:#ffffff;background-color:#FF0000;WIDTH:40px; HEIGHT:40px;" />
+        <input type="button" value="自動" onclick="clickBtn(&quot;AUTO&quot;)"
+            style="color:#000000;background-color:#808080;WIDTH:80px; HEIGHT:40px;" />
+    </p>
+
+
+</body>
+
+</html>
